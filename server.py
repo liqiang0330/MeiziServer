@@ -11,13 +11,13 @@ db = mongoClient['dbmeizi']
 def toJson(data):
     return json.dumps(data, default=json_util.default)
 
-@app.route('/meizi/', methods=['GET'])
+@app.route('/meizi', methods=['GET'])
 
 def findmeizi():
     if request.method == 'GET':
-        lim = int(request.args.get('limit', 10))
-        off = int(request.args.get('offset'),0)
-        results = db['meizi'].find().skip(off).limit(lim)
+        #lim = int(limit)
+        #off = int(offset)
+        results = db['meizi'].find().skip(0).limit(20)
         json_results= []
         for result in results:
             json_results.append(result)
